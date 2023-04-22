@@ -1,4 +1,7 @@
-﻿using QuizApp.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using QuizApp.Data;
+using QuizApp.Services;
+using QuizApp.Services.Interfaces;
 
 namespace QuizApp
 {   public class Startup
@@ -13,7 +16,14 @@ namespace QuizApp
         }
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<AppDb>();
+            services.AddMvc();
+            services.AddScoped<IQuestionService, QuestionService>();
+
+            services.AddDbContext<AppDb>(builder =>
+            {
+                builder.UseSqlServer(@"Data source=(localdb)\MSSQLLocalDB;Initial Catalog=QuizDb;Integrated Security=True");
+            });
+           
             services.AddRazorPages();
         }
         public void Configure(WebApplication app, IWebHostEnvironment env)

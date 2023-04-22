@@ -1,0 +1,27 @@
+﻿@model QuizApp.Models.Question;
+
+@{
+    ViewData["Title"] = "AddQuestion";
+}
+
+<h1>Dodaj pytanie</h1>
+
+@using(Html.BeginForm("AddQuestion","Question",FormMethod.Post))
+{
+    @Html.ValidationSummary()
+
+    <span>Treść pytania:</span> @Html.TextBoxFor(x => x.Content); 
+    <br />
+    @for (int i = 0; i < 4; i++)
+    {
+        <span>Odpowiedź @(i + 1):</span> @Html.TextBoxFor(x => x.Answers[i].Content);
+        <br />
+        <span>Czy to jest poprawna odpowiedź:</span> @Html.RadioButtonFor(x => x.CorrectAnswerId, i,new { Name = "CorrectAnswerId" })
+        <br />
+        @Html.HiddenFor(x => x.Answers[i].QuestionId, Model.Id)
+       /// @Html.HiddenFor(x => x.Answers[i].Question, Model)
+    }
+    
+
+    <button type="submit">Dodaj pytanie</button>
+}

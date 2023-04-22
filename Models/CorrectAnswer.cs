@@ -5,14 +5,15 @@ namespace QuizApp.Models
 {
     public class CorrectAnswer
     {
-        [Key, ForeignKey("Question")]
+        [ForeignKey("QuestionId")]
         public int QuestionId { get; set; }
 
-        [ForeignKey("Answer")]
+        [Key,ForeignKey("AnswerId")]
         public int AnswerId { get; set; }
 
-        public Question Question { get; set; }
+       
+        public Question? Question { get; set; }
 
-        public Answer Answer { get; set; }
+        public Answer? Answer { get; set; }
     }
 }
