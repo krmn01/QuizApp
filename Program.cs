@@ -13,6 +13,14 @@ builder.Services.AddDbContext<AppDb>(options =>
 });
 builder.Services.AddScoped<IQuestionService, QuestionService>();
 builder.Services.AddScoped<IAnswerService, AnswerService>();
+builder.Services.AddScoped<ITestService, TestService>();
+
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
 
 var app = builder.Build();
 
@@ -22,7 +30,7 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/Home/Error");
 }
 app.UseStaticFiles();
-
+app.UseSession();
 app.UseRouting();
 
 app.UseAuthorization();

@@ -19,6 +19,14 @@ namespace QuizApp
             services.AddMvc();
             services.AddScoped<IQuestionService, QuestionService>();
             services.AddScoped<IAnswerService, AnswerService>();
+            services.AddScoped<ITestService, TestService>();
+
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
 
             services.AddDbContext<AppDb>(builder =>
             {
@@ -35,9 +43,11 @@ namespace QuizApp
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            app.UseSession();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();
+           
             app.UseAuthorization();
             app.MapRazorPages();
             app.Run();

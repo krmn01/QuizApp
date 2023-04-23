@@ -15,6 +15,9 @@
           }
         }
       },
+      "jQuery/3.6.4": {
+        "type": "package"
+      },
       "Microsoft.CSharp/4.5.0": {
         "type": "package",
         "compile": {
@@ -800,6 +803,29 @@
         "lib/netstandard2.0/Humanizer.dll",
         "lib/netstandard2.0/Humanizer.xml",
         "logo.png"
+      ]
+    },
+    "jQuery/3.6.4": {
+      "sha512": "6p9twP9WU+SPZPH5ArBBrXeesAEAlwuyw2tFbqcqQj5CARfh6R+v1216WkBGaeJJu7gZw2lLG+7Nh/XOylcsqg==",
+      "type": "package",
+      "path": "jquery/3.6.4",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Content/Scripts/jquery-3.6.4-vsdoc.js",
+        "Content/Scripts/jquery-3.6.4.js",
+        "Content/Scripts/jquery-3.6.4.min.js",
+        "Content/Scripts/jquery-3.6.4.min.map",
+        "Content/Scripts/jquery-3.6.4.slim.js",
+        "Content/Scripts/jquery-3.6.4.slim.min.js",
+        "Content/Scripts/jquery-3.6.4.slim.min.map",
+        "Tools/common.ps1",
+        "Tools/install.ps1",
+        "Tools/jquery-3.6.4.intellisense.js",
+        "Tools/uninstall.ps1",
+        "jquery.3.6.4.nupkg.sha512",
+        "jquery.nuspec"
       ]
     },
     "Microsoft.CSharp/4.5.0": {
@@ -2009,7 +2035,8 @@
     "net6.0": [
       "Microsoft.EntityFrameworkCore >= 6.0.16",
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.16",
-      "Microsoft.EntityFrameworkCore.Tools >= 6.0.16"
+      "Microsoft.EntityFrameworkCore.Tools >= 6.0.16",
+      "jQuery >= 3.6.4"
     ]
   },
   "packageFolders": {
@@ -2070,6 +2097,10 @@
             "suppressParent": "All",
             "target": "Package",
             "version": "[6.0.16, )"
+          },
+          "jQuery": {
+            "target": "Package",
+            "version": "[3.6.4, )"
           }
         },
         "imports": [

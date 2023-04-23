@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "qemYWNY9vd+UbuxRfuD0LZdVcE9VnpPaBiEzZiQ5YN8=",
+  "Hash": "bZ1tqlakxpYypuoBfk14BCS83nD/gF7TYpbpBY2BWfs=",
   "Source": "QuizApp",
   "BasePath": "_content/QuizApp",
   "Mode": "Default",
@@ -83,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\DELL\\Desktop\\DOTNET\\QuizApp\\wwwroot\\js\\getQuestion.js",
+      "SourceId": "QuizApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\DELL\\Desktop\\DOTNET\\QuizApp\\wwwroot\\",
+      "BasePath": "_content/QuizApp",
+      "RelativePath": "js/getQuestion.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\getQuestion.js"
     },
     {
       "Identity": "C:\\Users\\DELL\\Desktop\\DOTNET\\QuizApp\\wwwroot\\js\\site.js",

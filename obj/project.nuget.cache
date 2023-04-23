@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "UJ9GLTnXHA4jCfsvibKdFNozFIyZwA/Sx6xUQBOFRL73fofwYG4ABeOBKY3F/Uq+UOhytXxEHcju6U9a2U9P0g==",
+  "dgSpecHash": "CApzZFnvcf5ViAuRY70FNE5lT+lSZzY8v/HWCyzqaiAQtp7+KAavIkt8bT3/MSFcNID1ic9MfaiH85O5vSOTVw==",
   "success": true,
   "projectFilePath": "C:\\Users\\DELL\\Desktop\\DOTNET\\QuizApp\\QuizApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\DELL\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\DELL\\.nuget\\packages\\jquery\\3.6.4\\jquery.3.6.4.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.1.1\\microsoft.data.sqlclient.sni.runtime.2.1.1.nupkg.sha512",

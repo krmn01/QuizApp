@@ -36,6 +36,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/DELL/Desktop/DOTNET/QuizApp/Views/Test/GetTest.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdFxHZXRUZXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/DELL/Desktop/DOTNET/QuizApp/Views/Test/StartTest.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVzdFxTdGFydFRlc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/DELL/Desktop/DOTNET/QuizApp/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

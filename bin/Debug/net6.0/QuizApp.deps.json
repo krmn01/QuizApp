@@ -10,7 +10,8 @@
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "6.0.16",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.16",
-          "Microsoft.EntityFrameworkCore.Tools": "6.0.16"
+          "Microsoft.EntityFrameworkCore.Tools": "6.0.16",
+          "jQuery": "3.6.4"
         },
         "runtime": {
           "QuizApp.dll": {}
@@ -24,6 +25,7 @@
           }
         }
       },
+      "jQuery/3.6.4": {},
       "Microsoft.CSharp/4.5.0": {},
       "Microsoft.Data.SqlClient/2.1.4": {
         "dependencies": {
@@ -459,6 +461,13 @@
       "sha512": "sha512-OiKusGL20vby4uDEswj2IgkdchC1yQ6rwbIkZDVBPIR6al2b7n3pC91elBul9q33KaBgRKhbZH3+2Ur4fnWx2A==",
       "path": "humanizer.core/2.8.26",
       "hashPath": "humanizer.core.2.8.26.nupkg.sha512"
+    },
+    "jQuery/3.6.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6p9twP9WU+SPZPH5ArBBrXeesAEAlwuyw2tFbqcqQj5CARfh6R+v1216WkBGaeJJu7gZw2lLG+7Nh/XOylcsqg==",
+      "path": "jquery/3.6.4",
+      "hashPath": "jquery.3.6.4.nupkg.sha512"
     },
     "Microsoft.CSharp/4.5.0": {
       "type": "package",
