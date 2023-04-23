@@ -12,6 +12,7 @@ builder.Services.AddDbContext<AppDb>(options =>
     options.UseSqlServer(@"Data source=(localdb)\MSSQLLocalDB;Initial Catalog=QuizDb;Integrated Security=True");
 });
 builder.Services.AddScoped<IQuestionService, QuestionService>();
+builder.Services.AddScoped<IAnswerService, AnswerService>();
 
 var app = builder.Build();
 

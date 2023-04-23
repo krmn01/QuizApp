@@ -11,8 +11,8 @@ using QuizApp.Data;
 namespace QuizApp.Migrations
 {
     [DbContext(typeof(AppDb))]
-    [Migration("20230422214238_init")]
-    partial class init
+    [Migration("20230423033826_initiation")]
+    partial class initiation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -47,13 +47,24 @@ namespace QuizApp.Migrations
 
             modelBuilder.Entity("QuizApp.Models.CorrectAnswer", b =>
                 {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
                     b.Property<int>("AnswerId")
                         .HasColumnType("int");
 
                     b.Property<int>("QuestionId")
                         .HasColumnType("int");
 
-                    b.HasKey("AnswerId");
+                    b.HasKey("Id");
+
+                    b.HasIndex("AnswerId");
+
+                    b.HasIndex("QuestionId")
+                        .IsUnique();
 
                     b.ToTable("correctAnswers");
                 });
@@ -75,9 +86,6 @@ namespace QuizApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CorrectAnswerId")
-                        .IsUnique();
-
                     b.ToTable("questions");
                 });
 
@@ -86,8 +94,7 @@ namespace QuizApp.Migrations
                     b.HasOne("QuizApp.Models.Question", "Question")
                         .WithMany("Answers")
                         .HasForeignKey("QuestionId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("Question");
                 });
@@ -100,28 +107,22 @@ namespace QuizApp.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Answer");
-                });
-
-            modelBuilder.Entity("QuizApp.Models.Question", b =>
-                {
-                    b.HasOne("QuizApp.Models.CorrectAnswer", "CorrectAnswer")
-                        .WithOne("Question")
-                        .HasForeignKey("QuizApp.Models.Question", "CorrectAnswerId")
+                    b.HasOne("QuizApp.Models.Question", "Question")
+                        .WithOne("CorrectAnswer")
+                        .HasForeignKey("QuizApp.Models.CorrectAnswer", "QuestionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("CorrectAnswer");
-                });
+                    b.Navigation("Answer");
 
-            modelBuilder.Entity("QuizApp.Models.CorrectAnswer", b =>
-                {
                     b.Navigation("Question");
                 });
 
             modelBuilder.Entity("QuizApp.Models.Question", b =>
                 {
                     b.Navigation("Answers");
+
+                    b.Navigation("CorrectAnswer");
                 });
 #pragma warning restore 612, 618
         }

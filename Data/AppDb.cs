@@ -12,13 +12,12 @@ namespace QuizApp.Data
             modelBuilder.Entity<Answer>()
                 .HasOne(a => a.Question)
                 .WithMany(q => q.Answers)
-                .HasForeignKey(a => a.QuestionId)
                 .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Question>()
                 .HasMany(q => q.Answers)
                 .WithOne(a => a.Question)
-                .HasForeignKey(a => a.QuestionId)
+                .IsRequired(false)
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<CorrectAnswer>()
@@ -30,13 +29,12 @@ namespace QuizApp.Data
             modelBuilder.Entity<CorrectAnswer>()
                 .HasOne(ca => ca.Answer)
                 .WithMany()
-                .HasForeignKey(ca => ca.AnswerId)
                 .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Question>()
                 .HasOne(q => q.CorrectAnswer)
                 .WithOne(ca => ca.Question)
-                .HasForeignKey<Question>(q => q.CorrectAnswerId)
+                .HasForeignKey<CorrectAnswer>(q => q.QuestionId)
                 .OnDelete(DeleteBehavior.Cascade);
 
             base.OnModelCreating(modelBuilder);

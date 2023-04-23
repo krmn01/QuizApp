@@ -7,30 +7,18 @@ namespace QuizApp.Models
     public class Question
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         [Required]
         public string Content { get; set; }
      
         public List<Answer>? Answers { get; set; } = new List<Answer>();
 
-        [ForeignKey("CorrectAnswerId")]
+        [Required]
         public int CorrectAnswerId { get; set; }
         public CorrectAnswer? CorrectAnswer { get; set; }
 
 
-        public Question()
-        {
-
-            Answers = new List<Answer>
-            {
-                new Answer{Content = string.Empty, Question = this },
-                new Answer{Content = string.Empty, Question = this },
-                new Answer{Content = string.Empty, Question = this },
-                new Answer{Content = string.Empty, Question = this }
-            };
-
-            
-            CorrectAnswer = new CorrectAnswer();
-        }
+      
     }
 }

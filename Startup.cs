@@ -18,6 +18,7 @@ namespace QuizApp
         {
             services.AddMvc();
             services.AddScoped<IQuestionService, QuestionService>();
+            services.AddScoped<IAnswerService, AnswerService>();
 
             services.AddDbContext<AppDb>(builder =>
             {

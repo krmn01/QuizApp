@@ -3,12 +3,18 @@ using System.ComponentModel.DataAnnotations;
 
 namespace QuizApp.Models
 {
+   
     public class CorrectAnswer
     {
-        [ForeignKey("QuestionId")]
+
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+
+        [Required]
         public int QuestionId { get; set; }
 
-        [Key,ForeignKey("AnswerId")]
+        [Required]
         public int AnswerId { get; set; }
 
        
