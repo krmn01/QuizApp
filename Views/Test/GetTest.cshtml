@@ -2,7 +2,7 @@
 
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<h2>Question <span id="question-number">@TempData["CurrentQuestionId"]</span> / <span id="question-count">@ViewData["QuestionsCount"]</span></h2>
+<h2>Question <span id="question-number"></span> / <span id="question-count">@ViewData["QuestionsCount"]</span></h2>
 <h3 id="question-text"></h3>
 <ul id="answer-list"></ul>
 
@@ -12,7 +12,11 @@
             type: "GET",
             url: "/Test/GetNextQuestion",
             success: function (data) {
-                updateView(data);
+                if (data.redirectUrl) {
+                    window.location.replace(data.redirectUrl);
+                } else {
+                    updateView(data);
+                }
             }
         });
     });
@@ -23,15 +27,20 @@
             url: "/Test/GetNextQuestion",
             data: { answerId: answerId },
             success: function (data) {
-                updateView(data);
+                if (data.redirectUrl) {
+                    window.location.replace(data.redirectUrl);
+                } else {
+                    updateView(data);
+                }
             }
         });
     }
 
     function updateView(test) {
         //var currentQuestion = test.
+
         var currentAnswers = test.answers[0];
-       // $("#question-number").text(test.currentQuestionId);
+        $("#question-number").text(parseInt(test.currentQuestionId)+1);
        // $("#question-count").text(test.answers.length);
         $("#question-text").text(test.content);
 
@@ -48,5 +57,6 @@
             listItem.append(answerText);
             answerList.append(listItem);
         });
+        
     }
 </script>

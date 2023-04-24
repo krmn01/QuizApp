@@ -5,7 +5,7 @@
         public List<Question> questions { get; }
         public int currentQuestionId { get; set; }
 
-        private int points { get; set; }
+        public int points { get; set; }
         
         public Test(List<Question> questions)
         {

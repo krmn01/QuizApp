@@ -38,5 +38,12 @@ namespace QuizApp.Services
             }
             return newTest;
         }
+
+        public bool CheckAnswer(int questionId, int answerId)
+        {
+            var correctAnswer = _context.correctAnswers.Find(questionId);
+            return answerId == correctAnswer.AnswerId;
+        }
+
     }
 }

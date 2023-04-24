@@ -33,50 +33,54 @@ namespace QuizApp.Controllers
             byte[] testBytes = HttpContext.Session.Get("Test");
             Test test = JsonSerializer.Deserialize<Test>(testBytes);
 
-            // Update current question ID
-            test.currentQuestionId++;
 
+            if (_testService.CheckAnswer(test.questions[test.currentQuestionId].Id, answerId))
+            {
+                test.points += 1;
+            }
+
+
+            test.currentQuestionId++;
             // Check if all questions have been answered
             if (test.currentQuestionId >= test.questions.Count)
             {
-                // TODO: Handle end of test
-                return View("TestEnd");
+                TempData["Points"] = test.points;
+                TempData["Size"] = test.questions.Count;
+                return Json(new { redirectUrl = Url.Action("TestEnd") });
             }
 
-            // Update the selected answer for the current question
-            Question currentQuestion = test.questions[test.currentQuestionId - 1];
-            Answer selectedAnswer = currentQuestion.Answers.FirstOrDefault(a => a.Id == answerId);
-            if (selectedAnswer != null)
-            {
-               
-            }
+
 
             // Get the next question
             Question nextQuestion = test.questions[test.currentQuestionId];
+
 
             // Store the updated test object in session
             testBytes = JsonSerializer.SerializeToUtf8Bytes(test);
             HttpContext.Session.Set("Test", testBytes);
 
             // Return the next question as JSON
-            return Json(nextQuestion);
+            return Json(new { id = nextQuestion.Id, content = nextQuestion.Content, answers = nextQuestion.Answers, currentQuestionId = test.currentQuestionId });
         }
-    
+
+     [HttpGet]
+     public IActionResult TestEnd()
+       {
+            return View();
+        }
 
     [HttpGet]
     public JsonResult GetNextQuestion()
     {
-            // Get the current test from the session
             byte[] testBytes = HttpContext.Session.Get("Test");
             Test test = JsonSerializer.Deserialize<Test>(testBytes);
 
-
-            // Get the next question
+            Console.WriteLine($"currentQuestionId: {test.currentQuestionId}, questions count: {test.questions.Count}");
+            
             var nextQuestion = test.GetNextQuestion();
 
-        // Return the next question as JSON
-        return Json(nextQuestion);
-    }
+        return Json(new { id = nextQuestion.Id, content = nextQuestion.Content, answers = nextQuestion.Answers, currentQuestionId = test.currentQuestionId });
+        }
 
     [HttpGet]
         public IActionResult GetTest(Question quest)
@@ -93,7 +97,7 @@ namespace QuizApp.Controllers
 
             ViewData["Test"] = test;
             ViewData["Question"] = question;
-            TempData["CurrenQuestionId"] = test.currentQuestionId;
+            TempData["CurrentQuestionId"] = test.currentQuestionId;
             ViewData["QuestionsCount"] = test.questions.Count;
             return View();
         }
