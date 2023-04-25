@@ -41,7 +41,7 @@ namespace QuizApp.Controllers
 
 
             test.currentQuestionId++;
-            // Check if all questions have been answered
+  
             if (test.currentQuestionId >= test.questions.Count)
             {
                 TempData["Points"] = test.points;
@@ -49,31 +49,30 @@ namespace QuizApp.Controllers
                 return Json(new { redirectUrl = Url.Action("TestEnd") });
             }
 
-
-
-            // Get the next question
             Question nextQuestion = test.questions[test.currentQuestionId];
-
 
             // Store the updated test object in session
             testBytes = JsonSerializer.SerializeToUtf8Bytes(test);
             HttpContext.Session.Set("Test", testBytes);
 
-            // Return the next question as JSON
             return Json(new { id = nextQuestion.Id, content = nextQuestion.Content, answers = nextQuestion.Answers, currentQuestionId = test.currentQuestionId });
         }
 
      [HttpGet]
      public IActionResult TestEnd()
        {
+            byte[] testBytes = HttpContext.Session.Get("Test");
+            if (testBytes == null) return RedirectToAction("StartTest");
+            
+            Test? test = JsonSerializer.Deserialize<Test>(testBytes);
             return View();
-        }
+       }
 
     [HttpGet]
     public JsonResult GetNextQuestion()
     {
             byte[] testBytes = HttpContext.Session.Get("Test");
-            Test test = JsonSerializer.Deserialize<Test>(testBytes);
+            Test? test = JsonSerializer.Deserialize<Test>(testBytes);
 
             Console.WriteLine($"currentQuestionId: {test.currentQuestionId}, questions count: {test.questions.Count}");
             

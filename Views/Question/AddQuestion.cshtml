@@ -10,18 +10,19 @@
 {
     @Html.ValidationSummary()
 
-    <span>Treść pytania:</span> @Html.TextBoxFor(x => x.Content); 
+    <span>Treść pytania:</span> @Html.TextBoxFor(x => x.Content, new{Class ="form-control"}); 
     <br />
     @for (int i = 0; i < 4; i++)
     {
-        <span>Odpowiedź @(i + 1):</span> @Html.TextBoxFor(x => x.Answers[i].Content);
+        <span>Odpowiedź @(i + 1):</span> @Html.TextBoxFor(x => x.Answers[i].Content, new{Class ="form-control"})
+        ;
         <br />
-        <span>Czy to jest poprawna odpowiedź:</span> @Html.RadioButtonFor(x => x.CorrectAnswerId, i,new { Name = "CorrectAnswerId" })
+        <span>Czy to jest poprawna odpowiedź:</span> @Html.RadioButtonFor(x => x.CorrectAnswerId, i,new {Class = "form-control", Name = "CorrectAnswerId" })
         <br />
         //@Html.HiddenFor(x => x.Answers[i].QuestionId, Model.Id)
        /// @Html.HiddenFor(x => x.Answers[i].Question, Model)
     }
     
 
-    <button type="submit">Dodaj pytanie</button>
+    <button class ="btn-lg btn-primary" type="submit">Dodaj pytanie</button>
 }

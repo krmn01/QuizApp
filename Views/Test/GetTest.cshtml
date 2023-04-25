@@ -2,9 +2,12 @@
 
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<div class="mb3">
 <h2>Question <span id="question-number"></span> / <span id="question-count">@ViewData["QuestionsCount"]</span></h2>
-<h3 id="question-text"></h3>
-<ul id="answer-list"></ul>
+<div><h3 id="question-text"></h3></div>
+<ul class="list-group" id="answer-list"></ul>
+</div>
 
 <script>
     $(document).ready(function () {
@@ -47,7 +50,7 @@
         var answerList = $("#answer-list");
         answerList.empty();
         $.each(test.answers, function (index, answer) {
-            var listItem = $("<li>");
+            var listItem = $('<li class="list-group-item">');
             var radioButton = $("<input type='radio' name='answer' value='" + answer.id + "'>");
             radioButton.click(function () {
                 answerSelected(answer.id);
