@@ -49,7 +49,8 @@ namespace QuizApp.Controllers
                 return Json(new { redirectUrl = Url.Action("TestEnd") });
             }
 
-            Question nextQuestion = test.questions[test.currentQuestionId];
+            Question nextQuestion = test.GetNextQuestion();
+                //test.questions[test.currentQuestionId]);
 
             // Store the updated test object in session
             testBytes = JsonSerializer.SerializeToUtf8Bytes(test);
@@ -92,11 +93,9 @@ namespace QuizApp.Controllers
                 return Redirect("StartTest");
             }
 
-            Question question = test.questions[test.currentQuestionId];
+            Question question = test.GetNextQuestion();
+                //test.questions[test.currentQuestionId];
 
-            ViewData["Test"] = test;
-            ViewData["Question"] = question;
-            TempData["CurrentQuestionId"] = test.currentQuestionId;
             ViewData["QuestionsCount"] = test.questions.Count;
             return View();
         }

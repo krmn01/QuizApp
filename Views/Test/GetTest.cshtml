@@ -55,7 +55,7 @@
             radioButton.click(function () {
                 answerSelected(answer.id);
             });
-            var answerText = $("<span>").text(answer.content);
+            var answerText = $("<span>").text(" "+answer.content);
             listItem.append(radioButton);
             listItem.append(answerText);
             answerList.append(listItem);

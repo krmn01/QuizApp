@@ -2,10 +2,21 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+
 }
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <div>
     <center>
         <h2>Test ukończony!</h2>
         <h3>Twój wynik to @TempData["Points"] / @TempData["Size"] </h3>
+        <button class="btn-md btn-primary" type="button" id="newTest">Generuj nowy test</button> 
     </center>
 </div>
+
+<script>
+    $("#newTest").on("click", function () {
+        window.location.replace("StartTest");
+    });
+</script>

@@ -17,7 +17,9 @@
         <span>Odpowiedź @(i + 1):</span> @Html.TextBoxFor(x => x.Answers[i].Content, new{Class ="form-control"})
         ;
         <br />
-        <span>Czy to jest poprawna odpowiedź:</span> @Html.RadioButtonFor(x => x.CorrectAnswerId, i,new {Class = "form-control", Name = "CorrectAnswerId" })
+            <center>
+                 <span>Czy to jest poprawna odpowiedź:</span> @Html.RadioButtonFor(x => x.CorrectAnswerId, i,new {Class = "form-check-input", Name = "CorrectAnswerId" })
+             </center>
         <br />
         //@Html.HiddenFor(x => x.Answers[i].QuestionId, Model.Id)
        /// @Html.HiddenFor(x => x.Answers[i].Question, Model)
